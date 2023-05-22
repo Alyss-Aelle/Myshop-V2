@@ -1,31 +1,27 @@
- <!--affichage des categories-->
- @foreach ($categories as $itemCategory)
- <ul>
-     <li>
-         <a href="{{route('filtre.categorie',$itemCategory)}}">{{{$itemCategory->name}}}</a></li>
- </ul>
+@extends('layouts.myshop')
+@section('main')
+    
 
- @endforeach
+<div class="masonry-loader masonry-loader-showing">
+    <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
 
 
+        @forelse ($products as $itemProduct)
+        <x-product.card :itemProduct='$itemProduct'/>
+        
+        @empty
+            
+        @endforelse
+       
+    </div>
+</div>
  <!--affichage des produits-->
  
 
- <ul>
-     @forelse ($products as $itemProduct)
-     
-     <li>{{{$itemProduct->name}}}</li>
-     <li>{{{$itemProduct->description}}}</li>
-     <li>{{{$itemProduct->price}}}€</li>
-     
-     <a href="{{route('accueil.detail',$itemProduct)}}">Detail</a>
-
-     @empty
-     
-     @endforelse
- </ul>
 
 
 
  
 
+
+@endsection

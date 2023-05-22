@@ -16,7 +16,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [ProductController::class, 'index'])->name('accueil ');
+Route::get('/', [ProductController::class, 'index'])->name('accueil');
     //filtre par categorie
 Route::get('/filtre/{categorie}', [ProductController::class, 'index'])->name('filtre.categorie');
     //detail
@@ -34,8 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
        //detail (ne peuvent ajouter au panier que les utilisateurs connectés)
-Route::get('/addtocart/{product}', [CartController::class, 'add'])->name('addtocart');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/del/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::get('/cart/upd/{id}', [CartController::class, 'edit'])->name('cart.edit');
+
 });
 
 require __DIR__.'/auth.php';

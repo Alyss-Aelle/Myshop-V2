@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         //
         //Listing produits
-        $products = Product::orderBy('created_at','desc')->paginate(10);
+        $products = Product::orderBy('created_at','asc')->paginate(10);
         
         //Listing produits par categorie
         if ($categorie!=0) {
@@ -22,11 +22,14 @@ class ProductController extends Controller
             $products = Product::where('category_id',$categorie)->orderBy('created_at','desc')->paginate(10);
         }
     
+        //Listing produit dans le panier
+        $carts = Cart::all();
+        
 
         //Listing categories
         $categories = Category::orderBy('name')->get();
 
-        return view ('welcome',compact('products','categories'));
+        return view ('welcome',compact('products','categories','carts'));
     }
 
     /**
@@ -38,8 +41,9 @@ class ProductController extends Controller
          //selctionner les produits qui ont la meme categorie
              $products = Product::where('category_id',$product->category_id)->inRandomOrder()->limit(4)->get();
         
-        
-        return view('detail',compact('product','products'));
+        $carts = Cart::all();
+        $categories = Category::all();
+        return view('detail',compact('product','products','carts','categories'));
        
     }
 
