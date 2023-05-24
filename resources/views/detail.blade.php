@@ -288,7 +288,8 @@
                                     <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">
                                         QUICK VIEW
                                     </a>
-                                    <a href="shop-product-sidebar-left.html">
+                                    
+                                    <a href="{{route('accueil.detail',$productSimilar)}}">
                                         <div class="product-thumb-info-image">
                                             @if (isset($itemProduct->image))
                                             <img src="{{Storage::url($itemProduct->image)}}" alt="" class="img-fluid">
@@ -302,7 +303,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">{{$productSimilar->category->name}}</a>
-                                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary">{{$productSimilar->name}}</a></h3>
+                                        <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0"><a href="{{route('accueil.detail',$productSimilar)}}" class="text-color-dark text-color-hover-primary">{{$productSimilar->name}}</a></h3>
                                     </div>
                                     <a href="#" class="text-decoration-none text-color-default text-color-hover-dark text-4"><i class="far fa-heart"></i></a>
                                 </div>

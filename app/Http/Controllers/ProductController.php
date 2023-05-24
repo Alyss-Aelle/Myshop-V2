@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function detail(Product $product)
     {
          //selctionner les produits qui ont la meme categorie
-             $products = Product::where('category_id',$product->category_id)->inRandomOrder()->limit(4)->get();
+             $products = Product::where('category_id',$product->category_id)->inRandomOrder()->limit(6)->get();
         
         $carts = Cart::all();
         $categories = Category::all();

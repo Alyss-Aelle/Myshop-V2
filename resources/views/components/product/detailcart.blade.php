@@ -21,7 +21,7 @@
                         <a href="#" title="Camera X1000" class="product-image"><img src="/img/products/product-1.jpg" alt="Camera X1000"></a>
                         <div class="product-details">
                             <p class="product-name">
-                                <a href="#">{{$itemCart->product->name}}</a>
+                                <a href="{{route('accueil.detail',$itemCart->product)}}">{{$itemCart->product->name}}</a>
                             </p>
                             <p class="qty-price">
                                 {{$itemCart->quantity}}X<span class="price">{{$itemCart->price}}</span>
@@ -40,7 +40,7 @@
 
                 <div class="actions">
                     <a class="btn btn-dark" href="{{route('cart')}}">View Cart</a>
-                    <a class="btn btn-primary" href="#">Checkout</a>
+                    <a class="btn btn-primary" href="{{route('checkout')}}">Checkout</a>
                 </div>
             </div>
         </div>
